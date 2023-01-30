@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<title> Time Control </title>
+<link rel="stylesheet" type="text/css" href="page-style.css">
+<script src="index.js"></script>
+</lin>
+
+<body>
+    <div>
+        <div>
+            <h1>
+                Time Control
+            </h1>
+
+            <img src="../resources/Game Hub.jpeg">
+            
+            <p>
+                In collaboration with <a href="https://www.linkedin.com/in/julia-gabriela-santi-acosta/"> Julia</a>, we developed an application designed for parents to manage and regulate their child's usage of video games. The application is implemented as a desktop crawler that scans the computer for games, and enforces restrictions on access to them, as per rules specified by the parents, via a web-based interface.
+            </p>
+
+            <p>
+                The crawler application was written in C# with the graphical interface created with Windows Forms then WPF. To download the game covers, the IGDB API was used. It, however, was too slow to be responsive. Local cache was possible and used but the first time loading took 1 second per game. That's why a C++ server using cpprestsdk was developed to act as a cloud cache to all games that were previously requested, reducing the first loading time dramatically. This server was hosted using Google's servers Kubernets and could easily exceed the free credits. C++ was my choice to control exactly how the CPU would spend each cycle because at the time I have no experience with other web solutions such as NodeJS. The web-side server was written in Typescript using MongoDB via Mongoose to store data. This server was executed in Hekoku servers which required us to learn how to create a Docker container for the application. A complete diagram can be found in the next image:
+            </p>
+            <img src="../resources/Diagram.jpg">
+            <p>
+                We learned a bit about a handful of new technologies to complete the application. The relation of all languages, frameworks and technologies used can be found here: 
+            </p>
+            <img src="../resources/Stack.jpg">
+                    
+        </div>
+    </div>
+
+</body>
+
+</html>

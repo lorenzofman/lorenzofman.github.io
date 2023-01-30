@@ -1,0 +1,98 @@
+body {
+  background-color: #0E0E0E;
+}
+
+a {
+  color: #809fff;
+}
+
+button > a {
+  color: #fefeff;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: whitesmoke;
+  font-family: 'Gilroy-ExtraBold', sans-serif;
+}
+
+p {
+  color: whitesmoke;
+  font-family: 'Gilroy-ExtraBold', sans-serif;
+}
+
+body > div{
+  display: flex;
+  justify-content: center;
+}
+body > div > div {
+  background-color: #323232;
+  border-radius: 16px;
+  margin: 64px;
+  width: 40%;
+  gap: 32px;
+  padding: 32px 64px;
+  display: flex;
+  flex-direction: column;
+  vertical-align: center;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-content: center;
+  justify-content: center;
+  vertical-align: center;
+}
+
+.horizontal > img{
+  object-fit: cover;
+  width: calc(50% - 8px);
+}
+
+.sq-image-group{
+  display: flex;
+  justify-content: center;
+  border-radius: 16px;
+  gap: 16px;
+  flex-direction: row;
+  vertical-align: center;
+  flex-wrap: wrap;
+ 
+}
+
+.sq-image-group > *{
+  object-fit: cover;
+  border-radius: 16px;
+  width: 45%;
+}
+
+.btn {
+  background-color: rgb(203, 27, 91);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: rgb(167, 20, 74);
+}

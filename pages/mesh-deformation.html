@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<title> Real-Time Mesh Deformation </title>
+<link rel="stylesheet" type="text/css" href="page-style.css">
+<script src="index.js"></script>
+</lin>
+
+<body>
+    <div>
+        <div>
+            <h1>
+                Real-Time Mesh Deformation
+            </h1>
+            
+            <p>
+                This project explores, inside Unity, a solution to dynamically deform and cut animated meshes. The project used NVIDIA FleX as the physics foundation to build upon more complex system.
+            </p>
+
+            <div class="sq-image-group">
+                <img src="../resources/Different cuts.jpeg">           
+                <img src="../resources/Beheading.jpeg">
+                <img src="../resources/Cut with blood.jpeg">
+                <img src="../resources/Beheading 2.jpeg">
+                <img src="../resources/Cuts_0.jpeg">
+                <img src="../resources/Cuts_0.jpeg">
+                <img src="../resources/Cuts_1.jpeg">
+                <img src="../resources/Cuts_2.jpeg">
+                <img src="../resources/Cuts_3.jpeg">
+                <img src="../resources/Cuts_4.jpeg">
+                <img src="../resources/Cuts_5.jpeg">
+                <img src="../resources/Cuts_6.jpeg">
+                <img src="../resources/Cuts_7.jpeg">
+                <img src="../resources/Cuts_8.jpeg">
+                <img src="../resources/Cuts_9.jpeg">
+                <img src="../resources/Cuts_10.jpeg">
+                <img src="../resources/Cuts_11.jpeg">
+                <img src="../resources/Cuts_12.jpeg">
+                <img src="../resources/Cuts_13.jpeg">
+                <img src="../resources/Apple Cut.jpeg">
+            </div>
+            
+            <p>
+                Each mesh is sampled to generate a group of particles connected by clusters. THE NVIDIA FleX uses shape-matching to minimize the error of each particle to their original positions relative to each cluster:
+            </p>
+
+            <div class="horizontal">
+                <img src="../resources/Cactus_Representation.jpeg">
+                <img src="../resources/Mesh_Representation.jpeg">
+            </div>
+
+            <p>
+                This process allows physical objects to dynamically interact with skinned meshes, such as in the next example:
+            </p>
+
+            <video autoplay muted loop>
+                <source src="../resources/featured/Mesh_Manipulation.mp4" type="video/mp4">
+            </video>
+                        
+
+            <p>
+                To cut the geometry, two processes are required: a visual cut (1) and a physical separation (2). In (1) the mesh vertices are split in the cut height and the connected pool separates into two islands. In (2) a similar process is applied to the particles with each own deciding the side they are on. A planar cut was used to simplify the computational cost, but other complex cuts could be applied. If only the physics cut is applied, the mesh still is connected and triangles are incorrectly stretched:
+            </p>
+            
+            <img src="../resources/Only_Physics_Cut.jpeg">
+
+            
+            <p>
+                After the cut is executed, the mesh becomes hollow and it is possible to see that there is nothing inside of it. To fix this issue, the both sides vertices are connected to form a face with a different texture.
+            </p>
+
+            <div class="horizontal">
+                <img src="../resources/Cut_Without_Fill.jpeg">
+                <img src="../resources/Cut Filling.jpeg">
+            </div>
+
+            <p>
+                The diagram below illustrate how such face is created. The planar cut creates two groups of vertices where the plane intersect the mesh. The plane translation and rotation is applied to the vertices, transforming it in a 2D problem. A constrained Delaunay triangulation is then used and the new created vertices are reverted back to the original transformation.  
+            </p>
+            
+            <img src="../resources/Triangulation.jpeg">
+
+            <p>
+                Blood is simulated as a fluid inside NVIDIA FleX. Each particle separated in a cut spawns liquid using a decreasing pulsating function.
+            </p>
+
+        
+            <img src="../resources/Traversal Cut.jpeg">
+
+            <p>
+               The core algorithms developed to perform the cutting both in the physics model and in the mesh were optimized using the Job System and the Burst Compiler. For example, the animation playback which had to be calculated from the clusters to the modified bones by hand was optimized using Burst + Jobs:
+            </p>
+
+            <img src="../resources/Animation.png">
+
+            <p>
+                Comparing with <a href="https://arxiv.org/abs/2108.05281">"Deep Cut"</a>, a pre-published paper, ours have slight better performance in a similar model while closing cuts and while continuing the simulation of the dropped parts. Theirs offer a wider variety of cuts.    
+            </p>
+
+            <img src="../resources/Cactus comparison.jpeg">
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<title> Multiplayer Driving </title>
+<link rel="stylesheet" type="text/css" href="page-style.css">
+<script src="index.js"></script>
+</lin>
+
+<body>
+    <div>
+        <div>
+            <h1>
+                Multiplayer Driving
+            </h1>
+
+            <p>
+                A network prototype I started working for a personal project. The game specs required 100 vehicles per server. Thus, using Unity's network solution were not a viable option.
+            </p>
+
+            <iframe height="480" src="https://www.youtube.com/embed/8mQ8q1HffBE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            <p>
+                It was implemented on top of Unity's Transport System and with a server authoritative design.
+                Only relevant input keys were sent to server and it responded with a complete world snapshot. Without wheels data, I managed to keep the snapshot for 100 cars below 1500 bytes. Client prediction, server reconciliation and distance-based data quality selection were the next steps to implement. The delay was masked as if it was from the vehicle steering itself. 
+            </p>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
